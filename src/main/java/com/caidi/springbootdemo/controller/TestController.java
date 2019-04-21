@@ -32,13 +32,13 @@ public class TestController {
 
     @RequestMapping("importExcel")
     public void importExcel(){
-        String filePath = "F:\\æµ·è´¼ç‹.xls";
-        //è§£æexcelï¼Œ
+        String filePath = "F:\\º£ÔôÍõ.xls";
+        //½âÎöexcel£¬
         List<Person> personList = ExcelUtil.importExcel(filePath,1,1,Person.class);
-        //ä¹Ÿå¯ä»¥ä½¿ç”¨MultipartFile,ä½¿ç”¨ FileUtil.importExcel(MultipartFile file, Integer titleRows, Integer headerRows, Class<T> pojoClass)å¯¼å…¥
-        System.out.println("å¯¼å…¥æ•°æ®ä¸€å…±ã€"+personList.size()+"ã€‘è¡Œ");
+        //Ò²¿ÉÒÔÊ¹ÓÃMultipartFile,Ê¹ÓÃ FileUtil.importExcel(MultipartFile file, Integer titleRows, Integer headerRows, Class<T> pojoClass)µ¼Èë
+        System.out.println("µ¼ÈëÊı¾İÒ»¹²¡¾"+personList.size()+"¡¿ĞĞ");
 
-        //TODO ä¿å­˜æ•°æ®åº“
+        //TODO ±£´æÊı¾İ¿â
     }
 
 

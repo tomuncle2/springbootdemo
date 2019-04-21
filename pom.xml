@@ -41,7 +41,7 @@
         </dependency>
 
 
-        <!-- lombokå¯ä½¿ä»£ç æ›´ç®€æ´ -->
+        <!-- lombok¿ÉÊ¹´úÂë¸ü¼ò½à -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
