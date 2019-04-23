@@ -1,17 +1,19 @@
 package com.caidi.springbootdemo.controller;
 
-import ch.qos.logback.core.util.FileUtil;
+
 import com.caidi.springbootdemo.domain.Person;
 import com.caidi.springbootdemo.service.DownExcelService;
-import com.caidi.springbootdemo.service.impl.DownExcelServiceImpl;
 import com.caidi.springbootdemo.util.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -22,23 +24,53 @@ public class TestController {
     private DownExcelService downExcelService;
 
     @GetMapping(value="helloword")
-    public String HelloWord(){
+    public String HelloWord(HttpServletRequest request){
+        /**/
+        HttpSession session = request.getSession();
         return "hello word !!";
     }
+
+    /**
+     * @Author è”¡è¿ª
+     * @Description //æµ‹è¯•webmvcconfigè§†å›¾
+     * @Date 16:16 2019/4/23
+     * @Param []
+     * @return org.springframework.web.servlet.ModelAndView
+     **/
+    @GetMapping(value="testview")
+    public ModelAndView Testview(){
+        ModelAndView m  =new ModelAndView("/thymeleaf/test.html");
+        m.addObject("name","æµ‹è¯•view");
+        return m;
+    }
+
+
+    /**
+     * @Author è”¡è¿ª
+     * @Description //easypoiå¯¼å‡º
+     * @Date 9:35 2019/4/23
+     * @Param [response]
+     * @return void
+     **/
     @GetMapping(value="downexcel")
     public void export(HttpServletResponse response){
         downExcelService.downExcel(response);
     }
 
+    /**
+     * @Author è”¡è¿ª
+     * @Description //easypoiå¯¼å…¥
+     * @Date 9:36 2019/4/23
+     * @Param [request]
+     * @return void
+     **/
     @RequestMapping("importExcel")
-    public void importExcel(){
-        String filePath = "F:\\º£ÔôÍõ.xls";
-        //½âÎöexcel£¬
+    public void importExcel(HttpServletRequest request){
+        String filePath = "F:\\æµ·è´¼ç‹.xls";
+        //è§£æexcelï¼Œ
         List<Person> personList = ExcelUtil.importExcel(filePath,1,1,Person.class);
-        //Ò²¿ÉÒÔÊ¹ÓÃMultipartFile,Ê¹ÓÃ FileUtil.importExcel(MultipartFile file, Integer titleRows, Integer headerRows, Class<T> pojoClass)µ¼Èë
-        System.out.println("µ¼ÈëÊı¾İÒ»¹²¡¾"+personList.size()+"¡¿ĞĞ");
-
-        //TODO ±£´æÊı¾İ¿â
+        //ä¹Ÿå¯ä»¥ä½¿ç”¨MultipartFile,ä½¿ç”¨ FileUtil.importExcel(MultipartFile file, Integer titleRows, Integer headerRows, Class<T> pojoClass)å¯¼å…¥
+        System.out.println("å¯¼å…¥æ•°æ®ä¸€å…±ã€"+personList.size()+"ã€‘è¡Œ");
     }
 
 

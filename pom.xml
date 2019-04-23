@@ -41,7 +41,7 @@
         </dependency>
 
 
-        <!-- lombok¿ÉÊ¹´úÂë¸ü¼ò½à -->
+        <!-- lombokï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -68,6 +68,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>4.3.13.RELEASE</version>
+        </dependency>
+
+        <!--thymeleafæ¨¡æ¿-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <!--<dependency>-->
