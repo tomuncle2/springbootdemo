@@ -5,7 +5,6 @@ import com.caidi.springbootdemo.domain.Person;
 import com.caidi.springbootdemo.service.DownExcelService;
 import com.caidi.springbootdemo.util.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
