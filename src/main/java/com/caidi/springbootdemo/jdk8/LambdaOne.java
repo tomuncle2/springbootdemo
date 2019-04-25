@@ -10,21 +10,26 @@
  */
 package com.caidi.springbootdemo.jdk8;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
-import java.sql.SQLOutput;
 
 /**
- * 〈一句话功能简述〉<br> 
- * 〈拉姆达表达式学习〉
+ * 〈一句话功能简述1.〉<br>
+ * 〈java8拉姆达表达式学习〉
+ *取代匿名内部类(残缺的闭包)
  *
  * @author Administrator
  * @create 2019/4/24
  * @since 1.0.0
  */
 public class LambdaOne {
+
+    //成员变量不用定义为final
+    private static int bbb = 777;
+
     public static void main(String[] args) {
     int aaa = 7;
+    //改变值会报错。局部变量必须是final的
+    //aaa=6;
+        bbb=1234;
         /***
          * @Author 蔡迪
          * @Descriptio
@@ -43,6 +48,12 @@ public class LambdaOne {
 
         //无参数
         NoOneParam noOneParam = ()-> {return 5;};
+
+        //无参数  引用外层局部变量
+        NoOneParam noOneParams = ()-> {return LambdaOne.bbb;};
+
+        //无参数  引用外层局部变量
+        NoOneParam noOneParamss = ()-> { bbb=666;return bbb;};
         //一个参数不需要括号
         OneParam oneParam = a-> {return a;};
         //参数类型声明
@@ -59,6 +70,8 @@ public class LambdaOne {
 
 
         VoidMethodInterface voidMethodInterface = (String message)->{ System.out.println("hello: "+message);};
+        System.out.println("noOneParams: " + noOneParams.operation());
+        System.out.println("noOneParamss: " + noOneParamss.operation());
         System.out.println(addition.operation(3,7));
         System.out.println(addition.operation(aaa,7));
         voidMethodInterface.operation("fdfdfd");
