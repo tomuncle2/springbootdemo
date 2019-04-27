@@ -5,6 +5,7 @@ import com.caidi.springbootdemo.domain.Person;
 import com.caidi.springbootdemo.service.DownExcelService;
 import com.caidi.springbootdemo.service.impl.DownExcelServiceImpl;
 import com.caidi.springbootdemo.util.ExcelUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("test")
+@Slf4j
 public class TestController {
 
     @Autowired
@@ -25,20 +27,22 @@ public class TestController {
     public String HelloWord(){
         return "hello word !!";
     }
+
     @GetMapping(value="downexcel")
     public void export(HttpServletResponse response){
+
         downExcelService.downExcel(response);
     }
 
     @RequestMapping("importExcel")
     public void importExcel(){
-        String filePath = "F:\\º£ÔôÍõ.xls";
-        //½âÎöexcel£¬
+        String filePath = "F:\\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.xls";
+        //ï¿½ï¿½ï¿½ï¿½excelï¿½ï¿½
         List<Person> personList = ExcelUtil.importExcel(filePath,1,1,Person.class);
-        //Ò²¿ÉÒÔÊ¹ÓÃMultipartFile,Ê¹ÓÃ FileUtil.importExcel(MultipartFile file, Integer titleRows, Integer headerRows, Class<T> pojoClass)µ¼Èë
-        System.out.println("µ¼ÈëÊý¾ÝÒ»¹²¡¾"+personList.size()+"¡¿ÐÐ");
+        //Ò²ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½MultipartFile,Ê¹ï¿½ï¿½ FileUtil.importExcel(MultipartFile file, Integer titleRows, Integer headerRows, Class<T> pojoClass)ï¿½ï¿½ï¿½ï¿½
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½"+personList.size()+"ï¿½ï¿½ï¿½ï¿½");
 
-        //TODO ±£´æÊý¾Ý¿â
+        //TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
     }
 
 
