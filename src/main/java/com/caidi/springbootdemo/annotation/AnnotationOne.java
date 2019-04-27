@@ -15,7 +15,7 @@ public @interface AnnotationOne {
 
     public Colors colors() default Colors.RED;
 
-    public Colors[] colorss() default {Colors.RED};
+    public Colors[] colorss() default {Colors.RED,Colors.BLACK};
 
     //ElementType[] type();
 }
