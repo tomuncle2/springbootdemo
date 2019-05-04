@@ -2,7 +2,9 @@ package com.caidi.springbootdemo.controller;
 
 
 import com.caidi.springbootdemo.domain.Person;
+import com.caidi.springbootdemo.domain.User;
 import com.caidi.springbootdemo.service.DownExcelService;
+import com.caidi.springbootdemo.service.JPAService;
 import com.caidi.springbootdemo.util.ExcelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class TestController {
 
     @Autowired
     private DownExcelService downExcelService;
+
+    @Autowired
+    private JPAService jpaService;
 
     @GetMapping(value="helloword")
     public String HelloWord(HttpServletRequest request){
@@ -54,5 +59,19 @@ public class TestController {
         List<Person> personList = ExcelUtil.importExcel(filePath,1,1,Person.class);
     }
 
+
+    /**
+     * @Author 蔡迪
+     * @Description //jpa测试
+     * @Date 9:36 2019/4/23
+     * @Param [request]
+     * @return void
+     **/
+    @RequestMapping("listAllUser")
+    public List<User> listAllUser(){
+
+        List<User>  listUser = jpaService.listUser();
+        return listUser;
+    }
 
 }
