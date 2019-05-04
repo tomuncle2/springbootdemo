@@ -1,6 +1,7 @@
-
 package com.caidi.springbootdemo.config;
-
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,12 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
+//import org.springframework.context.annotation.Primary;
+//import org.springframework.data.redis.connection.RedisConnectionFactory;
+//import org.springframework.data.redis.core.RedisTemplate;
+//import org.springframework.data.redis.serializer.RedisSerializer;
+//import org.springframework.data.redis.serializer.StringRedisSerializer;
+//import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 
 /**
  * Redis相关配置
@@ -21,10 +27,11 @@ import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 @EnableCaching
 public class RedisConfig {
 
-//    @Bean
-//    public RedisSerializer fastJsonJsonRedisSerializer() {
-//        return new FastJsonRedisSerializer(Object.class);
-//    }
+    @Bean
+    public RedisSerializer fastJsonJsonRedisSerializer() {
+        return new FastJsonRedisSerializer(Object.class);
+    }
+
 
     @Bean(value = "redisTemplate")
     @Primary
@@ -39,7 +46,8 @@ public class RedisConfig {
         return redisTemplate;
     }
 
-    @Bean(value = "stringRedisTemplate")
+    @Bean(value = "stringRedisTemplates")
+    @Primary
     public RedisTemplate<Object, Object> stringTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         RedisSerializer<String> stringSerializer = new StringRedisSerializer();
@@ -51,6 +59,7 @@ public class RedisConfig {
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
+
 
 //	@Bean
 //	public RedisCacheManager cacheManager(RedisTemplate redisTemplate) {

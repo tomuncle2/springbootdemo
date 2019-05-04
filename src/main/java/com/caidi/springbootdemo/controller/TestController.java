@@ -6,10 +6,10 @@ import com.caidi.springbootdemo.service.DownExcelService;
 import com.caidi.springbootdemo.util.ExcelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,16 +20,20 @@ import java.util.List;
 @Slf4j
 public class TestController {
 
+
+//    @Autowired
+//    private RedisTemplate redisTemplate;
+
     @Autowired
     private DownExcelService downExcelService;
 
     @GetMapping(value="helloword")
-    
     public String HelloWord(HttpServletRequest request){
         /**/
         HttpSession session = request.getSession();
         return "hello word !!";
     }
+
     @GetMapping(value="downexcel")
     public void export(HttpServletResponse response){
 
@@ -46,8 +50,8 @@ public class TestController {
     @RequestMapping("importExcel")
     public void importExcel(HttpServletRequest request){
         //解析excel，
+        String filePath="//海贼王.xsl";
         List<Person> personList = ExcelUtil.importExcel(filePath,1,1,Person.class);
-
     }
 
 
