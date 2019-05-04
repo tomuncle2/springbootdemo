@@ -1,11 +1,24 @@
 package com.caidi.springbootdemo.service.impl;
 
+import com.caidi.springbootdemo.dao.BaseJPADao;
+import com.caidi.springbootdemo.dao.MyJPACrudDao;
+import com.caidi.springbootdemo.dao.MyJPADao;
 import com.caidi.springbootdemo.domain.User;
 import com.caidi.springbootdemo.service.JPAService;
-
+import org.apache.poi.ss.formula.functions.T;
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
+@Service
 public class JPAServiceImpl implements JPAService {
+
+    @Resource
+    private MyJPADao myJPADao;
+
+    @Resource
+    private MyJPACrudDao myJPACrudDao;
 
     @Override
     public void saveUser() {
@@ -29,6 +42,13 @@ public class JPAServiceImpl implements JPAService {
 
     @Override
     public List<User> listUser() {
-        return null;
+        Iterable<User> u= myJPACrudDao.findAll();
+        Iterable<User> i= myJPADao.findAll();
+        List<User> list = new ArrayList<>();
+        Iterator<User> it = u.iterator();
+        while(it.hasNext()){
+            list.add(it.next());
+        }
+        return list;
     }
 }

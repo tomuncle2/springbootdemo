@@ -11,7 +11,7 @@ import java.util.Optional;
 //Repository<T, ID extends Serializable>
 /*自定义crud接口类*/
 @NoRepositoryBean
-public interface BaseJPADao extends Repository<User,Integer> {
+public interface BaseJPADao<T, ID> extends Repository<T, ID> {
     <S extends T> S save(S var1);
 
     <S extends T> Iterable<S> saveAll(Iterable<S> var1);
