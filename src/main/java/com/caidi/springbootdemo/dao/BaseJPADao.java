@@ -1,8 +1,6 @@
 package com.caidi.springbootdemo.dao;
 
-import com.caidi.springbootdemo.domain.User;
-import com.sun.xml.internal.bind.v2.model.core.ID;
-import org.apache.poi.ss.formula.functions.T;
+
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
