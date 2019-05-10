@@ -1,5 +1,6 @@
 package com.caidi.springbootdemo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.quartz.QuartzAutoConfiguration;
@@ -15,6 +16,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableCaching
 @SpringBootApplication(exclude = {QuartzAutoConfiguration.class})
+//扫描包下面的持久化类
+//@MapperScan(basePackages={"com.caidi.springbootdemo.MybatisDao.*"})
 public class SpringbootdemoApplicationInit extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface JPAService {
      void saveUser();
-
      void removeUser();
      void updateUser();
      User getUser(Integer uid);

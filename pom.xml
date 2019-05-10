@@ -33,6 +33,7 @@
         </dependency>
 
         <!--mvc web包内置了tomcat-->
+        <!-- web支持: 1、web mvc; 2、restful; 3、jackjson支持; 4、aop ........ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -59,7 +60,36 @@
         </dependency>
 
         <!--mybatis-->
-        
+        <!--
+			spring-boot mybatis依赖：
+			请不要使用1.0.0版本，因为还不支持拦截器插件，
+	    	1.1.1 是博主写帖子时候的版本，大家使用最新版本即可
+	     -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <!--
+            MyBatis提供了拦截器接口，我们可以实现自己的拦截器，
+            将其作为一个plugin装入到SqlSessionFactory中。
+            Github上有位开发者写了一个分页插件，我觉得使用起来还可以，挺方便的。
+            Github项目地址： https://github.com/pagehelper/Mybatis-PageHelper
+         -->
+        <!--<dependency> springboot环境里不会生效 要引入springboot版本-->
+            <!--<groupId>com.github.pagehelper</groupId>-->
+            <!--<artifactId>pagehelper</artifactId>-->
+            <!--<version>5.1.8</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+
 
         <!--easypoi-->
         <dependency>
