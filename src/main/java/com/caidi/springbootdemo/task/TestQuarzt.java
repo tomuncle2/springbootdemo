@@ -6,7 +6,6 @@ import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.QuartzJobBean;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -23,11 +22,7 @@ public class TestQuarzt extends QuartzJobBean {
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         LOGGER.info("Quartz任务开始");
         System.out.println("quartz task "+new Date());
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
         LOGGER.info("Quartz任务结束");
     }
 }
