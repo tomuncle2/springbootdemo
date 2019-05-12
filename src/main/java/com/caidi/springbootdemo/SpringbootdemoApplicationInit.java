@@ -13,10 +13,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 打war包需要继承springboot初始化类，springboot自动生成，运行类
 以替代spring传统项目的web.xml(tomcat等容器读取)
  */
-@EnableScheduling
-@EnableCaching
+//@EnableScheduling spring自带自动任务需要开启
+@EnableCaching //开启缓存
 @SpringBootApplication(exclude = {QuartzAutoConfiguration.class})
-//扫描包下面的持久化类
+//扫描包下面的持久化类 QuartzAutoConfiguration.class
 //@MapperScan(basePackages={"com.caidi.springbootdemo.MybatisDao.*"})
 public class SpringbootdemoApplicationInit extends SpringBootServletInitializer {
     @Override

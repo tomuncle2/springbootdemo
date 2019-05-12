@@ -12,7 +12,7 @@ mybatis添加的注解,
  */
 @Mapper
 public interface MyBatisDao{
-    @Insert(value = "insert into user (id,user_name) values(#{id},#{userName})")
+    @Insert(value = "insert into user (uid,username,password,enabled) values(#{uid},#{username},#{password},#{enabled})")
     //主键生成策略
     @Options(useGeneratedKeys=true,keyProperty = "uid",keyColumn = "uid")
     int insert(MybaitsUser user);
@@ -20,6 +20,9 @@ public interface MyBatisDao{
     @Select(value="select * from user")
     List<MybaitsUser> listUser();
 
-    @Select(value="select * from user where id = #{id}")
-    MybaitsUser getUser(@Param(value="id") Integer id);
+    @Select(value="select * from user where uid = #{uid}")
+    MybaitsUser getUser(@Param(value="uid") Integer uid);
+
+    //结合mybatis.xml
+    List<MybaitsUser> listUsers();
 }

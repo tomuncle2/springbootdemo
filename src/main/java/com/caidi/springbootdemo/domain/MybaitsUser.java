@@ -4,7 +4,9 @@ package com.caidi.springbootdemo.domain;
 import lombok.Data;
 import lombok.Getter;
 
+
 @Data
+@Getter
 public class MybaitsUser {
 
     private Integer uid;

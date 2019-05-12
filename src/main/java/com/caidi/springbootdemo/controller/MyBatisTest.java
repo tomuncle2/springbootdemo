@@ -16,15 +16,21 @@ public class MyBatisTest {
     private UserService userService;
 
     @GetMapping(value="insert")
-    int insert(MybaitsUser user){
-        int code = userService.insert(user);
-        return code;
+    MybaitsUser insert(MybaitsUser user){
+        MybaitsUser mybaitsUser = userService.insert(user);
+        return mybaitsUser;
     }
 
     @GetMapping(value="list")
     List<MybaitsUser> listUser(){
         List<MybaitsUser> listUser =  userService.listUser();
         return listUser;
+    }
+
+    @GetMapping(value="lists")
+    List<MybaitsUser> listUsers(){
+        List<MybaitsUser> listUsers =  userService.listUsers();
+        return listUsers;
     }
 
     @GetMapping(value="get")

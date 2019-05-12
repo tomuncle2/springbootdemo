@@ -5,7 +5,6 @@ import com.caidi.springbootdemo.domain.MybaitsUser;
 import com.caidi.springbootdemo.service.UserService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -15,18 +14,24 @@ public class UserServiceImpl implements UserService {
     private MyBatisDao myBatisDao;
 
     @Override
-    public int insert(MybaitsUser user) {
+    public MybaitsUser insert(MybaitsUser user) {
         user.setEnabled(1);
         user.setPassword("559492");
         user.setUsername("小李子");
         myBatisDao.insert(user);
-        return 1;
+        return user;
     }
 
     @Override
     public List<MybaitsUser> listUser() {
         PageHelper.startPage(2,1);
         return myBatisDao.listUser();
+    }
+
+    @Override
+    public List<MybaitsUser> listUsers() {
+        PageHelper.startPage(2,1);
+        return myBatisDao.listUsers();
     }
 
     @Override
