@@ -4,6 +4,7 @@ import com.caidi.springbootdemo.MybatisDao.MyBatisDao;
 import com.caidi.springbootdemo.domain.MybaitsUser;
 import com.caidi.springbootdemo.service.UserService;
 import com.github.pagehelper.PageHelper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,5 +38,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public MybaitsUser getUser(Integer id) {
         return null;
+    }
+
+    public List<MybaitsUser> list(){
+       return myBatisDao.listUsers();
     }
 }
